@@ -6,6 +6,6 @@
     "node_modules"
   ],
   "dependencies": {
-    "angular": "~1.2.14"
+    "d3": "~3.4"
   }
 }
