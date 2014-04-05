@@ -22,7 +22,8 @@ class { 'nodejs':
 package { [
     'pm2',
     'express',
-    'bower'
+    'bower',
+    'node-gyp'
     ]:
     ensure => present,
     provider => 'npm',
@@ -30,6 +31,15 @@ package { [
         Class['nodejs'],
         Package['make'],
         Package['git']
+    ]
+}
+
+exec { 'update_npm':
+    command => 'npm update -g',
+    path => '/usr/bin',
+    require => [
+        Class['nodejs'],
+        Package['node-gyp']
     ]
 }
 
@@ -45,9 +55,11 @@ exec { 'install_npm_packages':
     command => 'npm install',
     path => '/usr/bin',
     cwd => '/var/src/app',
+    returns => [0,1],
     require => [
         File['init_npm_directory'],
-        Class['nodejs']
+        Class['nodejs'],
+        Exec['update_npm']
     ]
 }
 

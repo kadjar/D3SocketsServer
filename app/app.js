@@ -1,11 +1,15 @@
-var express = require('express');
+var express = require('express.io');
 var routes = require('./routes');
+var sinewave = require('./equations').sinewave;
 var http = require('http');
 var path = require('path');
 var exphbs = require('express3-handlebars');
 var app = express();
 var port = process.env.PORT || 3000;
-var server = http.createServer(app).listen(port);
+var server = app.http().io();
+var timer = setInterval(function() {
+	app.io.broadcast('tick', sinewave(50, .02, Date.now() / 1000));
+}, 500);
 
 app.engine('handlebars', exphbs({
 	defaultLayout: 'main',
@@ -32,3 +36,5 @@ app.configure('development', function() {
 });
 
 app.get('/', routes.index);
+
+app.listen(port);
