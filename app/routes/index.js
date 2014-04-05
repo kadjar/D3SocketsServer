@@ -3,5 +3,6 @@ exports.index = function(req, res) {
 };
 
 exports.fourohfour = function(req, res) {
+    res.status(404);
 	res.render('404', {});
 };

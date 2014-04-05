@@ -20,14 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
-// app.get('*/*', routes.fourohfour);
+app.use(routes.fourohfour);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
