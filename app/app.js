@@ -1,6 +1,6 @@
 var express = require('express.io');
 var routes = require('./routes');
-var sinewave = require('./equations').sinewave;
+var sinesvc = require('./services/sinewave');
 var http = require('http');
 var path = require('path');
 var exphbs = require('express3-handlebars');
@@ -8,7 +8,8 @@ var app = express();
 var port = process.env.PORT || 3000;
 var server = app.http().io();
 var timer = setInterval(function() {
-	app.io.broadcast('tick', sinewave(50, .02, Date.now() / 1000));
+	sinesvc.step('testpattern');
+	app.io.broadcast('tick', sinesvc.get('testpattern'));
 }, 500);
 
 app.engine('handlebars', exphbs({
@@ -36,5 +37,4 @@ app.configure('development', function() {
 });
 
 app.get('/', routes.index);
-
 app.listen(port);

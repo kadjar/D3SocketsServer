@@ -1,8 +1,13 @@
 <p>{{moment}}</p>
 <script src="/static/bower_components/socket.io-client/dist/socket.io.min.js"></script>
 <script>
-var socket = io.connect();
-socket.on('tick',function(data) {
-    console.log('tick', data);
-});
+;(function() {
+    'use strict';
+
+    var socket = io.connect();
+
+    socket.on('tick',function(data) {
+        console.log('tick', data.moments[0], data.moments[1], data.moments[2]);
+    });
+}());
 </script>
