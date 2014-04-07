@@ -1,5 +1,19 @@
 # Getting Started
 
+### Vagrant
+
+This project uses Vagrant and Puppet to help quickly stand up development environments. If you already have Vagrant installed on your machine, then just `vagrant up`.
+
+#### Vagrant Commands
+
+For convenience, some of the pm2 commands can be executed through Vagrant directly:
+
+**vagrant app start:** Starts the app on all available processors  
+**vagrant app stop:** Stops all running instances of the app  
+**vagrant app restart:** Restarts all running instances of the app  
+**vagrant app list:** Lists the apps that are currently running  
+**vagrant app log:** Display a live log of all the apps that are currently running  
+
 ### NodeJS
 
 The default apt-get NodeJS package is an older version (0.6.x). Joyent has documented a
@@ -33,13 +47,3 @@ http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html
 ```
 sudo npm install -g pm2
 ```
-
-#### Vagrant Commands
-
-For convenience, some of the pm2 commands can be executed through Vagrant directly:
-
-**vagrant app start:** Starts the app on all available processors  
-**vagrant app stop:** Stops all running instances of the app  
-**vagrant app restart:** Restarts all running instances of the app  
-**vagrant app list:** Lists the apps that are currently running  
-**vagrant app log:** Display a live log of all the apps that are currently running  
