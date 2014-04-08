@@ -37,5 +37,6 @@ app.configure('development', function() {
 });
 
 app.get('/', routes.index);
+app.get('/ref', routes.ref)
 
 app.listen(port);
