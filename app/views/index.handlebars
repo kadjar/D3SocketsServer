@@ -1,13 +1,4 @@
 <p>{{moment}}</p>
+<link rel="stylesheet" href="/static/stylesheets/sinewave_test.css"/>
 <script src="/static/bower_components/socket.io-client/dist/socket.io.min.js"></script>
-<script>
-;(function() {
-    'use strict';
-
-    var socket = io.connect();
-
-    socket.on('tick',function(data) {
-        console.log('tick', data.moments[0], data.moments[1], data.moments[2]);
-    });
-}());
-</script>
+<script src="/static/javascripts/sinewave_test.js"></script>

@@ -10,7 +10,7 @@ var server = app.http().io();
 var timer = setInterval(function() {
 	sinesvc.step('testpattern');
 	app.io.broadcast('tick', sinesvc.get('testpattern'));
-}, 500);
+}, 250);
 
 app.engine('handlebars', exphbs({
 	defaultLayout: 'main',
@@ -37,4 +37,5 @@ app.configure('development', function() {
 });
 
 app.get('/', routes.index);
+
 app.listen(port);

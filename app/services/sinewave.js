@@ -4,7 +4,7 @@ var _hash = {};
 var _now = now();
 var _defaults = {
     amplitude: 50,
-    frequency: .02,
+    frequency: .25,
     offset: 0
 }
 
